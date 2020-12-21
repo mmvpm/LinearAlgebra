@@ -38,8 +38,8 @@ def qr_decomp_householder(A):
         # Вектор, вокруг которого будем отражать
         v = (u - e_j).normalize()
         
-        Q = householder_mul(Q, v) # Q = Q * H_v
-        R = householder_mul(R, v) # R = R * H_v
+        Q = householder_mul(Q, v) # Q = H_v * Q
+        R = householder_mul(R, v) # R = H_v * R
     
     Q = Q.transpose() # Q = Q^T
     

@@ -51,9 +51,9 @@ def get_tridiagonal(A):
         
         v = v.normalize()
 
-        TD = householder_mul(TD, v)       # TD = TD * H_v
-        TD = householder_mul_right(TD, v) # TD = H_v * TD
-        Q  = householder_mul(Q , v)       # Q  = Q  * H_v
+        TD = householder_mul(TD, v)       # TD = H_v * TD
+        TD = householder_mul_right(TD, v) # TD = TD * H_v
+        Q  = householder_mul(Q , v)       # Q  = H_v * Q
     
     Q = Q.transpose() # Q = Q^T
     
