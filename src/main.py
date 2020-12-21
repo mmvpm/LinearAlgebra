@@ -1,8 +1,18 @@
 # *-* coding: utf-8 *-*
 
-from graphSpectrum import *
-from iterativeMethods import *
-
+from task_1  import *
+from task_2  import *
+from task_3  import *
+from task_4  import *
+from task_5  import *
+from task_6  import *
+from task_7  import *
+from task_8  import *
+from task_9  import *
+from task_10 import *
+from task_11 import *
+from task_12 import *
+from task_13 import *
 
 if __name__ == '__main__':
     
@@ -17,7 +27,7 @@ if __name__ == '__main__':
     
     # Решаем A * x == b двумя методами
     x_it = simple_iteration(E - A, b, 1e-14)
-    x_gs = Gauss_Seidel(A, b, 1e-14)
+    x_gs = gauss_seidel(A, b, 1e-14)
     
     # Оператор (==) реализован через сравнение с погрешностью
     assert(A * x_it == b)
@@ -91,22 +101,22 @@ if __name__ == '__main__':
     
     ''' Изоморфизм '''
     
-    C = to_matrix(
-        '{{1,1,0,0,0,0},\
-          {1,0,0,0,0,0},\
-          {0,0,0,1,1,0},\
-          {0,0,1,0,0,1},\
-          {0,0,1,0,0,1},\
-          {0,0,0,1,1,0}}'
-    )
-    D = to_matrix(
-        '{{0,1,1,0,0,0},\
-          {1,0,0,1,0,0},\
-          {1,0,0,0,1,0},\
-          {0,1,0,0,0,1},\
-          {0,0,1,0,1,0},\
-          {0,0,0,1,0,0}}'
-    )
+    C = Matrix([
+        [1, 1, 0, 0, 0, 0],
+        [1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 1, 0],
+        [0, 0, 1, 0, 0, 1],
+        [0, 0, 1, 0, 0, 1],
+        [0, 0, 0, 1, 1, 0]
+    ])
+    D = Matrix([
+        [0, 1, 1, 0, 0, 0],
+        [1, 0, 0, 1, 0, 0],
+        [1, 0, 0, 0, 1, 0],
+        [0, 1, 0, 0, 0, 1],
+        [0, 0, 1, 0, 1, 0],
+        [0, 0, 0, 1, 0, 0]
+    ])
     
     assert(isomorphism(C, C))
     assert(not isomorphism(C, D))

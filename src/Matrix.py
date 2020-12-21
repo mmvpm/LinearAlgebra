@@ -232,6 +232,13 @@ class Matrix:
             result[i] = (self[i][i], sum(map(abs, self[i])) - abs(self[i][i]))
         return result
     
+    # Верно ли, что радиусы кругов Гершгорина у A меньше eps
+    def gc_check(self, eps = global_eps):
+        for cent, rad in self.gershgorin_circles():
+            if rad > eps:
+                return False
+        return True    
+    
         
     # Является ли матрица квадратной
     def square(self):
@@ -253,20 +260,3 @@ class Matrix:
                     break
         if fail:
             raise ValueError('Matrix must be tridiagonal')
-
-
-# Матрица из строки вида s = '{{..}, .., {..}}'
-def to_matrix(s):
-    
-    def remove_all(s, trash):
-        return ''.join([c for c in s if c not in trash])
-    
-    result = []
-    s = ''.join(s.split()).split(',')
-    for num in s:
-        if '{' in num or '[' in num:
-            result.append([])
-        num = remove_all(num, '{}[]')
-        result[-1].append(float(num))
-    
-    return Matrix(result)
